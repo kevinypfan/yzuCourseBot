@@ -9,7 +9,6 @@ import cv2
 import time
 import requests
 import numpy as np
-import configparser
 from bs4 import BeautifulSoup
 from keras.models import load_model
 
@@ -204,24 +203,22 @@ class CourseBot:
         print(time.strftime("[%Y-%m-%d %H:%M:%S]", time.localtime()), msg)
 
 if __name__ == '__main__':
-    configFilename = 'accounts.ini'
-    if not os.path.isfile(configFilename):
-        with open(configFilename, 'a') as f:
-            f.writelines(["[Default]\n", "Account= your account\n", "Password= your password"])
-            print('input your username and password in accounts.ini')
-            exit()
-    # get account info fomr ini config file
-    config = configparser.ConfigParser()
-    config.read(configFilename)
-    Account = config['Default']['Account']
-    Password = config['Default']['Password']
+    # Set environment variables    
+    Account = os.getenv('USER_ACCOUNT')
+    Password = os.getenv('USER_PASSWORD')
 
     # the courses you want to select, format: '`deptId`,`courseId``classId`'
-    coursesList = [
-        '304,CS250B',
-        # '304,CS310A',
-        # '901,LS239A', 
-    ]
+    coursesList = os.getenv('COURSES').split(';')
+    
+    print(Account)
+    print(Password)
+    print(coursesList)
+
+    # [
+    #     '304,CS250B',
+    #     '304,CS310A',
+    #     '901,LS239A', 
+    # ]
 
     # Time Parameter, sleep n seconds
     delay = 1

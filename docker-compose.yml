@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  course_bot:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - USER_ACCOUNT=account
+      - USER_PASSWORD=password
+      - COURSES=304,CS250B;304,CS310A

@@ -1,0 +1,6 @@
+opencv-python
+requests
+numpy
+beautifulsoup4
+keras
+tensorflow
