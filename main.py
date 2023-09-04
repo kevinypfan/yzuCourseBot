@@ -221,7 +221,7 @@ if __name__ == '__main__':
     # ]
 
     # Time Parameter, sleep n seconds
-    delay = 1
+    delay = int(os.getenv('DELAY'))
     
     depts = set([i.split(',')[0] for i in coursesList])
     
